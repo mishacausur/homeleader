@@ -6,6 +6,7 @@
 //
 
 #import "MainViewController.h"
+#import "homeleader-Swift.h"
 
 @interface MainViewController ()
 
@@ -15,7 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UIViewController *mainViewController = [[MainViewBridge new] makeMainViewUI];
+    [self presentViewController:mainViewController animated:YES completion:^{
+        
+    }];
 }
 
 
