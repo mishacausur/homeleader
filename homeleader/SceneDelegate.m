@@ -7,6 +7,7 @@
 
 #import "SceneDelegate.h"
 #import "MainViewController.h"
+#import "homeleader-Swift.h"
 
 @interface SceneDelegate ()
 
@@ -19,7 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.windowScene = (UIWindowScene *)scene;
     
-    UIViewController *viewController = [[MainViewController alloc] init];
+    UIViewController *viewController = [[MainViewBridge new] makeMainViewUI];
     viewController.view.backgroundColor = UIColor.whiteColor;
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
