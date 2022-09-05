@@ -9,18 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 24) {
+            HStack {
+                Image(systemName: "heart.fill")
+                Text("Favorite")
+                Image(systemName: "arrow.right")
+            }
             HStack {
                 Image(systemName: "gear")
                 Text("Settings")
                 Image(systemName: "arrow.right")
             }
-            .foregroundColor(.indigo)
-            .font(.title)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .foregroundColor(.indigo)
+        .font(.title)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(.gray)
+        .background(.gray.opacity(0.3))
     }
 }
 
