@@ -9,7 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(alignment: .leading,spacing: 24) {
+            HStack {
+                Image(systemName: "person.fill")
+                Text("Profile")
+                Image(systemName: "arrow.right")
+            }
             HStack {
                 Image(systemName: "heart.fill")
                 Text("Favorite")
