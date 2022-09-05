@@ -13,11 +13,11 @@ struct MainView: View {
             HStack {
                 Image(systemName: "gear")
                 Text("Settings")
-                    .foregroundColor(.indigo)
-                    .font(.title)
-            } .foregroundColor(.indigo)
-                .font(.title)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                Image(systemName: "arrow.right")
+            }
+            .foregroundColor(.indigo)
+            .font(.title)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .ignoresSafeArea()
         .background(.gray)
