@@ -11,10 +11,13 @@ struct MainView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Main screen")
+                Image(systemName: "gear")
+                Text("Settings")
                     .foregroundColor(.indigo)
                     .font(.title)
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            } .foregroundColor(.indigo)
+                .font(.title)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .ignoresSafeArea()
         .background(.gray)
