@@ -27,9 +27,7 @@ Completion completion = ^(void) {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     UIViewController *mainViewController = [[MainViewBridge new] makeMainViewUI];
-    [self presentViewController:mainViewController animated:YES completion:^{
-        
-    }];
+    [self presentViewController:mainViewController animated:YES completion: completion];
 }
 
 @end
