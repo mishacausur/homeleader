@@ -11,6 +11,7 @@
 @interface MainViewController ()
 
 @end
+typedef void(^Completion)(void);
 
 @implementation MainViewController
 
@@ -19,6 +20,10 @@
     
 }
 
+Completion completion = ^(void) {
+    
+};
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     UIViewController *mainViewController = [[MainViewBridge new] makeMainViewUI];
@@ -26,6 +31,5 @@
         
     }];
 }
-
 
 @end
