@@ -70,15 +70,21 @@ typedef void(^Completion)(void);
         if (sectionIndex == 0) {
             NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 3)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: (100)]];
             NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
-            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10)
+            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
+            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 3)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: (100)]];
+            NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
+            NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
+            section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorPaging;
+            return section;
+        } else {
+            return nil;
         }
-        
-        
     };
+    
     UICollectionViewCompositionalLayoutConfiguration * configuration = [[UICollectionViewCompositionalLayoutConfiguration alloc] init];
     self->_layout = [[UICollectionViewCompositionalLayout alloc] initWithSectionProvider:sectionProvider configuration:configuration];
-    [self.view addSubview:_collectionView];
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
+    [self.view addSubview:_collectionView];
     _collectionView.translatesAutoresizingMaskIntoConstraints = false;
     
     [_collectionView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
@@ -88,7 +94,7 @@ typedef void(^Completion)(void);
     
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    [_collectionView registerClass:UICollectionView.class forCellWithReuseIdentifier:@"CellID"];
+    [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"CellID"];
 }
 
 Completion completion = ^(void) {
