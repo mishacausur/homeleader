@@ -40,7 +40,7 @@ typedef void(^Completion)(void);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 4;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -67,7 +67,13 @@ typedef void(^Completion)(void);
     [super viewDidLoad];
     
     NSCollectionLayoutSection * _Nullable(^sectionProvider)(NSInteger, id<NSCollectionLayoutEnvironment> _Nonnull) = ^NSCollectionLayoutSection * _Nullable (NSInteger sectionIndex, id<NSCollectionLayoutEnvironment> _Nonnull layoutEnvironment) {
-        return nil;
+        if (sectionIndex == 0) {
+            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 3)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: (100)]];
+            NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
+            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10)
+        }
+        
+        
     };
     UICollectionViewCompositionalLayoutConfiguration * configuration = [[UICollectionViewCompositionalLayoutConfiguration alloc] init];
     self->_layout = [[UICollectionViewCompositionalLayout alloc] initWithSectionProvider:sectionProvider configuration:configuration];
