@@ -10,12 +10,58 @@
 
 @interface MainViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, retain) UICollectionView * collectionView;
-@property (nonatomic, retain) UICollectionViewFlowLayout * layout;
+@property (nonatomic, retain) UICollectionViewCompositionalLayout * layout;
 @end
 
 typedef void(^Completion)(void);
 
 @implementation MainViewController
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+    switch (indexPath.section) {
+        case 0:
+            cell.backgroundColor = UIColor.blueColor;
+            break;
+        case 1:
+            cell.backgroundColor = UIColor.redColor;
+            break;
+        case 2:
+            cell.backgroundColor = UIColor.greenColor;
+            break;
+        case 3:
+            cell.backgroundColor = UIColor.redColor;
+            break;
+        default:
+            cell.backgroundColor = UIColor.systemCyanColor;
+            break;
+    }
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 4;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return 10;
+            break;
+        case 1:
+            return 10;
+            break;
+        case 2:
+            return 3;
+            break;
+        case 3:
+            return 10;
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
