@@ -20,7 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.windowScene = (UIWindowScene *)scene;
     
-    UIViewController *viewController = [[MainViewBridge new] makeMainViewUI];
+    UIViewController *viewController = [[MainViewController new] init];
     viewController.view.backgroundColor = UIColor.whiteColor;
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
