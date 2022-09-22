@@ -30,7 +30,7 @@ typedef void(^Completion)(void);
             cell.backgroundColor = UIColor.greenColor;
             break;
         case 3:
-            cell.backgroundColor = UIColor.redColor;
+            cell.backgroundColor = UIColor.systemCyanColor;
             break;
         default:
             cell.backgroundColor = UIColor.systemCyanColor;
@@ -40,7 +40,7 @@ typedef void(^Completion)(void);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -92,6 +92,15 @@ typedef void(^Completion)(void);
             NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 100]];
             NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
             NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
+            return section;
+        } else if (sectionIndex == 3) {
+            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
+            NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
+            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
+            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
+            NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
+            NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
+            section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorContinuous;
             return section;
         } else {
             return nil;
