@@ -40,7 +40,7 @@ typedef void(^Completion)(void);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -72,6 +72,15 @@ typedef void(^Completion)(void);
             NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
             item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
             NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 3)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: (100)]];
+            NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
+            NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
+            section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorPaging;
+            return section;
+        } else if (sectionIndex == 1) {
+            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
+            NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
+            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
+            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
             NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
             NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
             section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorPaging;
