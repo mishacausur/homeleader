@@ -40,7 +40,7 @@ typedef void(^Completion)(void);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -77,13 +77,21 @@ typedef void(^Completion)(void);
             section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorPaging;
             return section;
         } else if (sectionIndex == 1) {
-            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
+            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 2)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
             NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
             item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
-            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
+            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width / 2)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 44]];
             NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
             NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
             section.orthogonalScrollingBehavior = UICollectionLayoutSectionOrthogonalScrollingBehaviorPaging;
+            return section;
+        }  else if (sectionIndex == 2) {
+            NSCollectionLayoutSize * itemSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 100]];
+            NSCollectionLayoutItem * item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
+            item.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
+            NSCollectionLayoutSize * groupSize = [NSCollectionLayoutSize sizeWithWidthDimension: [NSCollectionLayoutDimension absoluteDimension: (UIScreen.mainScreen.bounds.size.width)] heightDimension: [NSCollectionLayoutDimension absoluteDimension: 100]];
+            NSCollectionLayoutGroup * group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitems:@[item]];
+            NSCollectionLayoutSection * section = [NSCollectionLayoutSection sectionWithGroup:group];
             return section;
         } else {
             return nil;
